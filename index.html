@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Mom ❤️</title>
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+.hidden {
+    display: none;
+}
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: fall 3s linear infinite;
+}
+@keyframes fall {
+    from { transform: translateY(-10vh) rotate(0deg); }
+    to   { transform: translateY(110vh) rotate(720deg); }
+}
+</style>
+</head>
+
+<body class="bg-gradient-to-br from-pink-100 to-rose-200 min-h-screen">
+
+<!-- 🔒 PASSWORD SCREEN -->
+<div id="lockScreen" class="min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center">
+        <h1 class="text-3xl font-bold text-pink-600 mb-4">💖 A Special Surprise</h1>
+        <p class="text-gray-600 mb-6">Enter the secret password</p>
+
+        <input id="passwordInput"
+               type="password"
+               placeholder="Password"
+               class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+
+        <button onclick="unlock()"
+                class="mt-5 w-full bg-pink-500 text-white py-3 rounded-lg font-semibold hover:bg-pink-600 transition">
+            Unlock 💝
+        </button>
+
+        <p id="error" class="text-red-500 mt-4 hidden">Wrong password 🥺</p>
+    </div>
+</div>
+
+<!-- 🎉 MAIN WEBSITE -->
+<div id="mainContent" class="hidden relative overflow-hidden">
+
+<!-- Confetti -->
+<div id="confetti-container" class="absolute top-0 left-0 w-full h-full pointer-events-none"></div>
+
+<main class="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-6 sm:p-10 mt-10 mb-10">
+
+<!-- HEADER -->
+<header class="text-center border-b pb-6 mb-8">
+    <h1 class="text-4xl sm:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-red-500">
+        Happy Birthday Mumma ❤️
+    </h1>
+    <p class="text-gray-500 mt-2">loveyou forever</p>
+</header>
+
+<!-- CONTENT -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+
+<!-- SINGLE PHOTO -->
+<div class="flex flex-col items-center">
+    <div class="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden shadow-lg border-4 border-white transform hover:rotate-3 transition-transform">
+        <img src="mom.jpeg"
+             alt="My Mumma"
+             class="w-full h-full object-cover">
+    </div>
+    <p class="mt-4 text-gray-600 italic text-center">
+        Me & you, always 
+    </p>
+</div>
+
+<!-- MESSAGE -->
+<div class="space-y-6">
+    <div class="bg-pink-50 p-6 rounded-lg shadow-sm">
+        <h2 class="text-2xl font-semibold text-pink-700 mb-2">Dear Mumma</h2>
+        <p class="text-gray-700">
+            Thank you for every sacrifice, every hug, and every silent prayer.
+            I am who I am today because of you.
+        </p>
+    </div>
+
+    <div class="bg-rose-50 p-6 rounded-lg shadow-sm">
+        <h2 class="text-2xl font-semibold text-rose-700 mb-2">From My Heart</h2>
+        <p class="text-gray-700">
+            You are the best mumma in the whole world
+        </p>
+    </div>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="text-center mt-10 pt-6 border-t">
+    <p class="text-xl">I love you more than univere
+
+    </p>
+    <p class="text-gray-500 mt-2">— Akshaj</p>
+</footer>
+
+</main>
+</div>
+
+<!-- 🔑 SCRIPT -->
+<script>
+const correctPassword = "i love you mumma";
+
+function unlock() {
+    const input = document.getElementById("passwordInput").value;
+    const error = document.getElementById("error");
+
+    if (input === correctPassword) {
+        document.getElementById("lockScreen").style.display = "none";
+        document.getElementById("mainContent").classList.remove("hidden");
+        startConfetti();
+    } else {
+        error.classList.remove("hidden");
+    }
+}
+
+function startConfetti() {
+    const container = document.getElementById("confetti-container");
+    const colors = ['#f472b6','#fb7185','#f43f5e','#ec4899'];
+
+    for (let i = 0; i < 80; i++) {
+        const c = document.createElement("div");
+        c.className = "confetti";
+        c.style.left = Math.random() * 100 + "vw";
+        c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        c.style.animationDelay = Math.random() * 3 + "s";
+        c.style.width = c.style.height = Math.random() * 6 + 6 + "px";
+        container.appendChild(c);
+    }
+}
+</script>
+
+</body>
+</html>
